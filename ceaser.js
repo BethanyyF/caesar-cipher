@@ -53,11 +53,13 @@ function decryptFunc(char, shift) {
     if (alphabet.includes(char.toUpperCase())) { 
         position = alphabet.indexOf(char.toUpperCase());
         newPosition = (Number(position) - Number(shift))%26;    //Decrypt - Minus the shift
+
+        //If the shift become minus, add add 26
+        if(newPosition < 0) newPosition += 26;
+
         return alphabet[newPosition];
 
     } else { 
        return char 
     }
 }
-
-//Bug with Decrypt - If X = C when encrypted, C shows undefined when decrypted. Is the loop not going backwards?
